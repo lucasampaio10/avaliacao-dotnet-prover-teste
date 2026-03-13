@@ -46,7 +46,7 @@ public class AssinanteService
             throw new KeyNotFoundException("Assinante não encontrado.");
 
         var emailExistente = await _repository.ObterPorEmailAsync(dto.Email);
-        if (emailExistente != null && emailExistente.Id != id)
+        if (emailExistente != null && emailExistente.Id != assinante.Id)
             throw new DomainException("Já existe um assinante com este e-mail.");
 
         assinante.Atualizar(dto.NomeCompleto, dto.Email, dto.DataInicioAssinatura, dto.Plano, dto.ValorMensal);
